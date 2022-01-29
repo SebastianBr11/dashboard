@@ -2,7 +2,7 @@ import NavbarLink from './NavbarLink'
 
 export default function Navbar() {
 	return (
-		<header className=' dark:bg-gray-800'>
+		<header className=' dark:bg-slate-800'>
 			<nav className='flex max-w-6xl py-4 mx-auto'>
 				<NavbarLink className='self-center text-2xl' to='/'>
 					Dashboard

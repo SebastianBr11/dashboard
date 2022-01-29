@@ -1,18 +1,24 @@
 import {
 	Links,
+	LinksFunction,
 	LiveReload,
 	Meta,
 	Outlet,
 	Scripts,
 	ScrollRestoration,
+	useCatch,
 } from 'remix'
 import type { MetaFunction } from 'remix'
+import { ReactNode } from 'react'
 import styles from './tailwind.css'
 import Navbar from './components/Nav/Navbar'
-import { ReactNode } from 'react'
+import LinkButton from './components/LinkButton'
 
-export function links() {
-	return [{ rel: 'stylesheet', href: styles }]
+export const links: LinksFunction = () => {
+	return [
+		{ rel: 'stylesheet', href: styles },
+		{ rel: 'icon', href: '/favicon.ico' },
+	]
 }
 
 export const meta: MetaFunction = () => {
@@ -40,6 +46,33 @@ export default function App() {
 	)
 }
 
+export function CatchBoundary() {
+	const caught = useCatch()
+	return (
+		<html lang='en'>
+			<head>
+				<title>Oh no...</title>
+				<Links />
+			</head>
+			<body className='min-h-screen dark:bg-gray-900 dark:text-gray-200'>
+				<Layout>
+					<div className='flex flex-col items-center mt-32'>
+						<h1 className='mb-20 text-8xl'>
+							<span className='mr-4 font-bold'>{caught.status}</span>
+							<span className='font-light'>{caught.statusText}</span>
+						</h1>
+						<LinkButton className='text-2xl font-semibold ' to='/'>
+							Go Back
+						</LinkButton>
+					</div>
+				</Layout>
+				<Scripts />
+				{process.env.NODE_ENV === 'development' && <LiveReload />}
+			</body>
+		</html>
+	)
+}
+
 interface LayoutProps {
 	children: ReactNode
 }
@@ -48,7 +81,7 @@ function Layout({ children }: LayoutProps) {
 	return (
 		<>
 			<Navbar />
-			<main>{children}</main>
+			<main className='max-w-6xl pt-8 mx-auto'>{children}</main>
 		</>
 	)
 }
