@@ -5,6 +5,6 @@
 		"target": "ES6",
 		"jsx": "react-jsx"
 	},
-	"include": ["src"],
+	"include": ["src", "../../apps/web/remix.env.d.ts"],
 	"exclude": ["dist", "build", "node_modules"]
 }

@@ -8,6 +8,8 @@ import {
 } from 'remix'
 import type { MetaFunction } from 'remix'
 import styles from './tailwind.css'
+import Navbar from './components/Nav/Navbar'
+import { ReactNode } from 'react'
 
 export function links() {
 	return [{ rel: 'stylesheet', href: styles }]
@@ -26,12 +28,27 @@ export default function App() {
 				<Meta />
 				<Links />
 			</head>
-			<body>
-				<Outlet />
+			<body className='min-h-screen dark:bg-gray-900 dark:text-gray-200'>
+				<Layout>
+					<Outlet />
+				</Layout>
 				<ScrollRestoration />
 				<Scripts />
 				{process.env.NODE_ENV === 'development' && <LiveReload />}
 			</body>
 		</html>
+	)
+}
+
+interface LayoutProps {
+	children: ReactNode
+}
+
+function Layout({ children }: LayoutProps) {
+	return (
+		<>
+			<Navbar />
+			<main>{children}</main>
+		</>
 	)
 }

@@ -1,3 +1,3 @@
-declare function Navbar(): JSX.Element;
+declare const bla = "";
 
-export { Navbar };
+export { bla };
