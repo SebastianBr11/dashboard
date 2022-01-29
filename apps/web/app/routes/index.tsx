@@ -1,19 +1,20 @@
-import { Entry } from '@prisma/client'
 import { LoaderFunction, useLoaderData } from 'remix'
 import EntryList from '~/components/Entries/EntryList'
 import prisma from '~/lib/db.server'
+import { getFullEntry } from '~/lib/entries'
+import { FullEntry } from '~/types'
 
-type LoaderData = Entry[]
+type LoaderData = FullEntry[]
 
 export const loader: LoaderFunction = async () => {
 	const entries = await prisma.entry.findMany()
-	return entries
+	return entries.map(getFullEntry)
 }
 
 export default function Index() {
 	const entries = useLoaderData<LoaderData>()
 	return (
-		<div className=''>
+		<div className='max-w-6xl mx-auto'>
 			<h1 className='mb-6 text-4xl font-bold tracking-wide dark:text-gray-300'>
 				Entries
 			</h1>

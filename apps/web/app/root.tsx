@@ -54,7 +54,7 @@ export function CatchBoundary() {
 				<title>Oh no...</title>
 				<Links />
 			</head>
-			<body className='min-h-screen dark:bg-gray-900 dark:text-gray-200'>
+			<body className='min-h-screen px-6 dark:bg-gray-900 dark:text-gray-200'>
 				<Layout>
 					<div className='flex flex-col items-center mt-32'>
 						<h1 className='mb-20 text-8xl'>
@@ -81,7 +81,7 @@ function Layout({ children }: LayoutProps) {
 	return (
 		<>
 			<Navbar />
-			<main className='max-w-6xl pt-8 mx-auto'>{children}</main>
+			<main className='px-6 pt-8'>{children}</main>
 		</>
 	)
 }
