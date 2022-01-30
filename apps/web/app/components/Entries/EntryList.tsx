@@ -9,16 +9,21 @@ export default function EntryList({ entries }: EntryListProps) {
 	return (
 		<div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3 '>
 			{entries.map(entry => (
-				<a
+				<div
 					key={entry.id}
-					href={entry.url}
-					className='flex gap-4 p-6 rounded dark:bg-gray-800'
+					className='relative flex gap-4 p-6 rounded dark:bg-gray-800'
 				>
 					<div className='grid gap-4'>
-						<h2 className='text-2xl font-semibold dark:text-gray-400'>
+						<a
+							className='text-2xl font-semibold dark:text-gray-400 after:absolute after:inset-0'
+							href={entry.url}
+						>
 							{entry.name}
-						</h2>
-						<LinkButton className='self-end w-min' to={`/entries/${entry.id}`}>
+						</a>
+						<LinkButton
+							className='relative self-end w-min'
+							to={`/entries/${entry.id}`}
+						>
 							Edit
 						</LinkButton>
 					</div>
@@ -31,7 +36,7 @@ export default function EntryList({ entries }: EntryListProps) {
 							/>
 						)}
 					</div>
-				</a>
+				</div>
 			))}
 		</div>
 	)

@@ -1,6 +1,8 @@
 import { Entry } from '@prisma/client'
 import { FullEntry } from '~/types'
 
+const SUPPORTED_ENTRIES = ['pihole', 'nextcloud']
+
 const PIHOLE_IMG = '/icons/pihole.svg'
 const NEXTCLOUD_IMG = '/icons/nextcloud.svg'
 
@@ -13,4 +15,8 @@ export const getFullEntry = (entry: Entry): FullEntry => {
 	}
 
 	return entry
+}
+
+export const getSupportedEntries = () => {
+	return SUPPORTED_ENTRIES
 }

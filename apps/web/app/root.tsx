@@ -81,7 +81,7 @@ function Layout({ children }: LayoutProps) {
 	return (
 		<>
 			<Navbar />
-			<main className='px-6 pt-8'>{children}</main>
+			<main className='px-6 pt-12'>{children}</main>
 		</>
 	)
 }
