@@ -10,13 +10,13 @@ import {
 } from 'remix'
 import type { MetaFunction } from 'remix'
 import { ReactNode } from 'react'
-import styles from './tailwind.css'
+import tailwind from './tailwind.css'
 import Navbar from './components/Nav/Navbar'
 import LinkButton from './components/LinkButton'
 
 export const links: LinksFunction = () => {
 	return [
-		{ rel: 'stylesheet', href: styles },
+		{ rel: 'stylesheet', href: tailwind },
 		{ rel: 'icon', href: '/favicon.ico' },
 	]
 }
@@ -54,7 +54,7 @@ export function CatchBoundary() {
 				<title>Oh no...</title>
 				<Links />
 			</head>
-			<body className='min-h-screen px-6 dark:bg-gray-900 dark:text-gray-200'>
+			<body className='min-h-screen dark:bg-gray-900 dark:text-gray-200'>
 				<Layout>
 					<div className='flex flex-col items-center mt-32'>
 						<h1 className='mb-20 text-8xl'>

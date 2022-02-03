@@ -11,7 +11,7 @@ export default function EntryList({ entries }: EntryListProps) {
 			{entries.map(entry => (
 				<div
 					key={entry.id}
-					className='relative flex gap-4 p-6 rounded dark:bg-gray-800'
+					className='relative flex flex-wrap justify-center gap-4 p-6 rounded dark:bg-gray-800'
 				>
 					<div className='grid gap-4'>
 						<a
@@ -20,14 +20,11 @@ export default function EntryList({ entries }: EntryListProps) {
 						>
 							{entry.name}
 						</a>
-						<LinkButton
-							className='relative self-end w-min'
-							to={`/entries/${entry.id}`}
-						>
+						<LinkButton className='relative self-end w-min' to={`/${entry.id}`}>
 							Edit
 						</LinkButton>
 					</div>
-					<div className='flex-1 max-h-24'>
+					<div className='flex-1 max-h-24 basis-40'>
 						{entry.extra && (
 							<img
 								className='object-contain object-right w-full h-full'

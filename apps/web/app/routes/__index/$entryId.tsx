@@ -1,17 +1,35 @@
 import { Entry, Prisma } from '@prisma/client'
+import Dialog from '@reach/dialog'
+import styles from '@reach/dialog/styles.css'
 import {
 	ActionFunction,
 	Form,
 	json,
+	LinksFunction,
 	LoaderFunction,
 	useActionData,
 	useLoaderData,
+	useNavigate,
 	useTransition,
 } from 'remix'
 import { Button } from 'ui'
 import prisma from '~/lib/db.server'
 import { getFullEntry, getSupportedEntries } from '~/lib/entries'
 import { FullEntry } from '~/types'
+import dialogStyles from '~/styles/dialog.css'
+
+export const links: LinksFunction = () => {
+	return [
+		{
+			rel: 'stylesheet',
+			href: styles,
+		},
+		{
+			rel: 'stylesheet',
+			href: dialogStyles,
+		},
+	]
+}
 
 export const loader: LoaderFunction = async ({ params }) => {
 	const entry = await prisma.entry.findUnique({ where: { id: params.entryId } })
@@ -38,11 +56,22 @@ export const action: ActionFunction = async ({ params, request }) => {
 export default function Entry() {
 	const entry = useLoaderData<FullEntry>()
 	const transition = useTransition()
+	const navigate = useNavigate()
+
 	console.log(entry)
 
 	const isUpdated = transition.type === 'actionSubmission'
+
+	const onDismiss = () => {
+		navigate('/')
+	}
 	return (
-		<div className='grid max-w-6xl gap-5 mx-auto'>
+		<Dialog
+			className='grid max-w-6xl gap-5 !min-w-fit p-12 border-2 dark:border-slate-800 dark:!bg-gray-900'
+			onDismiss={onDismiss}
+			isOpen={true}
+			aria-label='Edit Entry'
+		>
 			<div className='flex'>
 				<h1 className='block text-6xl font-bold text-gray-300'>
 					{!isUpdated
@@ -57,7 +86,7 @@ export default function Entry() {
 					/>
 				)}
 			</div>
-			<Form method='post' className='grid grid-cols-2 gap-8'>
+			<Form method='post' className='grid gap-8 sm:grid-cols-2'>
 				<div className='grid gap-1'>
 					<label className='text-lg' htmlFor='name'>
 						Name
@@ -90,13 +119,21 @@ export default function Entry() {
 						))}
 					</select>
 				</div>
-				<Button
-					className='px-8 py-3 border-2 border-gray-500 rounded w-min'
-					type='submit'
-				>
-					Change
-				</Button>
+				<div className='flex flex-wrap gap-4'>
+					<Button
+						className='px-8 py-3 border-2 border-green-500 rounded hover:dark:bg-gray-800 w-min'
+						type='submit'
+					>
+						Change
+					</Button>
+					<Button
+						className='px-8 py-3 border-2 border-gray-500 rounded hover:dark:bg-gray-800 w-min'
+						onClick={onDismiss}
+					>
+						Cancel
+					</Button>
+				</div>
 			</Form>
-		</div>
+		</Dialog>
 	)
 }
