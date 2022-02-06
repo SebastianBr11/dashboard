@@ -16,7 +16,7 @@ import { Button } from 'ui'
 import prisma from '~/lib/db.server'
 import { getFullEntry, getSupportedEntries } from '~/lib/entries'
 import { FullEntry } from '~/types'
-import dialogStyles from '~/styles/dialog.css'
+import dialogStyles from '~/../styles/dialog.css'
 
 export const links: LinksFunction = () => {
 	return [
@@ -72,19 +72,21 @@ export default function Entry() {
 			isOpen={true}
 			aria-label='Edit Entry'
 		>
-			<div className='flex'>
-				<h1 className='block text-6xl font-bold text-gray-300'>
+			<div className='gap-4 sm:flex'>
+				<h1 className='flex items-center text-4xl font-bold text-gray-300 sm:text-6xl'>
 					{!isUpdated
 						? entry.name
 						: Object.fromEntries(transition.submission.formData).name}
+					<span className='ml-2'>
+						{entry.extra && (
+							<img
+								className='w-full h-full'
+								alt={entry.name}
+								src={entry.extra.img}
+							/>
+						)}
+					</span>
 				</h1>
-				{entry.extra && (
-					<img
-						className='object-left ml-4 max-h-16'
-						alt={entry.name}
-						src={entry.extra.img}
-					/>
-				)}
 			</div>
 			<Form method='post' className='grid gap-8 sm:grid-cols-2'>
 				<div className='grid gap-1'>
@@ -121,7 +123,7 @@ export default function Entry() {
 				</div>
 				<div className='flex flex-wrap gap-4'>
 					<Button
-						className='px-8 py-3 border-2 border-green-500 rounded hover:dark:bg-gray-800 w-min'
+						className='px-8 py-3 bg-green-900 border-2 border-green-500 rounded hover:dark:bg-green-800 w-min'
 						type='submit'
 					>
 						Change

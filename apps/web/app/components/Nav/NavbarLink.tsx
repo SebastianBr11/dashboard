@@ -18,7 +18,7 @@ interface Classes {
 }
 
 const classes = ({ isActive, asButton, otherClasses }: Classes) => {
-	if (!asButton) return 'py-2 px-6 ' + otherClasses
+	if (!asButton) return otherClasses || ''
 	const classNames = [
 		buttonClassNames,
 		isActive ? activeClassNames : inactiveClassNames,

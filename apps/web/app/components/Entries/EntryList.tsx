@@ -1,4 +1,7 @@
+import { Link } from 'remix'
 import { FullEntry } from '~/types'
+import ArrowCircleRight from '../Icons/ArrowCircleRight'
+import Edit from '../Icons/Edit'
 import LinkButton from '../LinkButton'
 
 interface EntryListProps {
@@ -7,32 +10,43 @@ interface EntryListProps {
 
 export default function EntryList({ entries }: EntryListProps) {
 	return (
-		<div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3 '>
+		<div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
 			{entries.map(entry => (
 				<div
 					key={entry.id}
-					className='relative flex flex-wrap justify-center gap-4 p-6 rounded dark:bg-gray-800'
+					className='flex flex-col justify-between gap-4 px-10 py-8 rounded shadow-md shadow-indigo-500/5 dark:bg-gradient-to-t from-indigo-900/20 via-indigo-800/20 to-indigo-900/20'
 				>
-					<div className='grid gap-4'>
+					<div className='flex items-center gap-4 dark:text-gray-400 '>
 						<a
-							className='text-2xl font-semibold dark:text-gray-400 after:absolute after:inset-0'
+							className='flex text-2xl font-semibold hover:dark:text-gray-300'
 							href={entry.url}
 						>
 							{entry.name}
 						</a>
-						<LinkButton className='relative self-end w-min' to={`/${entry.id}`}>
-							Edit
-						</LinkButton>
+						<Link to={`/${entry.id}`}>
+							<Edit className='w-full h-full hover:dark:text-gray-300' />
+						</Link>
 					</div>
-					<div className='flex-1 max-h-24 basis-40'>
-						{entry.extra && (
+					<LinkButton
+						external
+						className='flex items-center gap-2 font-semibold text-indigo-200 transition-colors border-2 w-fit border-indigo-500/50 hover:text-gray-900/80 hover:bg-indigo-500/80'
+						to={entry.url}
+					>
+						Go to
+						{!entry.extra ? (
+							<>
+								{' '}
+								{entry.name}
+								<ArrowCircleRight />
+							</>
+						) : (
 							<img
-								className='object-contain object-right w-full h-full'
+								className='aspect-square'
 								src={entry.extra.img}
 								alt={entry.name}
 							/>
-						)}
-					</div>
+						)}{' '}
+					</LinkButton>
 				</div>
 			))}
 		</div>
