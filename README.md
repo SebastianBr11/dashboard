@@ -1,6 +1,6 @@
-# Turborepo starter with pnpm
+# Dashboard created for my home nas
 
-This is an official starter turborepo.
+Created using turborepo starter project.
 
 ## What's inside?
 
@@ -8,11 +8,8 @@ This turborepo uses [pnpm](https://pnpm.io) as a packages manager. It includes t
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org) app
-- `web`: another [Next.js](https://nextjs.org) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+- `web`: a [Remix](https://remix.run) app
+- `ui`: a stub React component library shared by all apps
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
@@ -26,14 +23,14 @@ This turborepo has some additional tools already setup for you:
 
 ## Setup
 
-This repository is used in the `npx create-turbo@latest` command, and selected when choosing which package manager you wish to use with your monorepo (PNPM).
+Clone this repository.
 
 ### Build
 
 To build all apps and packages, run the following command:
 
 ```
-cd my-turborepo
+cd dashboard
 pnpm run build
 ```
 
@@ -65,13 +62,10 @@ Next, you can link your Turborepo to your Remote Cache by running the following 
 pnpx turbo link
 ```
 
-## Useful Links
+## Contributing
 
-Learn more about the power of Turborepo:
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-- [Pipelines](https://turborepo.org/docs/features/pipelines)
-- [Caching](https://turborepo.org/docs/features/caching)
-- [Remote Caching (Beta)](https://turborepo.org/docs/features/remote-caching)
-- [Scoped Tasks](https://turborepo.org/docs/features/scopes)
-- [Configuration Options](https://turborepo.org/docs/reference/configuration)
-- [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
