@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'remix'
-import { classNames } from '~/lib/lib'
+import { clsx } from 'lib'
 import Home from '../Icons/Home'
 import Menu from '../Icons/Menu'
 import Settings from '../Icons/Settings'
@@ -10,9 +10,7 @@ export default function Navbar() {
 	const [isOpen, setIsOpen] = useState(true)
 
 	return (
-		<header
-			className={classNames(isOpen && 'pr-8', 'px-4 dark:bg-gray-800/20 flex')}
-		>
+		<header className={clsx(isOpen && 'pr-8', 'px-4 dark:bg-gray-800/20 flex')}>
 			<nav className='flex flex-col max-w-6xl py-6 gap-y-5'>
 				<div className='flex items-center gap-2'>
 					<>
