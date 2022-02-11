@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { LoaderFunction, Outlet, useLoaderData } from 'remix'
 import EntryList from '~/components/Entries/EntryList'
 import prisma from '~/lib/db.server'
