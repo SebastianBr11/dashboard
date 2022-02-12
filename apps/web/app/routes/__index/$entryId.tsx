@@ -12,7 +12,7 @@ import {
 	useNavigate,
 	useTransition,
 } from 'remix'
-import { Button } from 'ui'
+import { Button } from '@dashboard/ui'
 import prisma from '~/lib/db.server'
 import { getFullEntry, getSupportedEntries } from '~/lib/entries'
 import { FullEntry } from '~/types'

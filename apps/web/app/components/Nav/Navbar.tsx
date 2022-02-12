@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'remix'
-import { clsx } from 'lib'
+import { clsx } from '@dashboard/lib'
 import Home from '../Icons/Home'
 import Menu from '../Icons/Menu'
 import Settings from '../Icons/Settings'
