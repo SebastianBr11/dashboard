@@ -1,6 +1,6 @@
 {
 	"private": true,
-	"name": "@dashboard/web",
+	"name": "web",
 	"version": "0.0.0",
 	"description": "",
 	"license": "",
@@ -17,11 +17,11 @@
 		"@reach/dialog": "^0.16.2",
 		"@remix-run/react": "^1.1.3",
 		"@remix-run/serve": "^1.1.3",
-		"@dashboard/lib": "*",
+		"@home-dashboard/lib": "*",
+		"@home-dashboard/ui": "*",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
-		"remix": "^1.1.3",
-		"@dashboard/ui": "*"
+		"remix": "^1.1.3"
 	},
 	"devDependencies": {
 		"@remix-run/dev": "^1.1.3",
