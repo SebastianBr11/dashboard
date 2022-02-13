@@ -1,4 +1,4 @@
-import { Entries } from '@dashboard/lib'
+import { Entries } from '@home-dashboard/lib'
 
 export interface StorageSettings {
 	url: string
