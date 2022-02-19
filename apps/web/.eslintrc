@@ -1,0 +1,5 @@
+{
+	"extends": "@remix-run/eslint-config",
+	"ignorePatterns": ["**/*.js"],
+	"root": true
+}

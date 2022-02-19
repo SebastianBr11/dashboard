@@ -3,7 +3,8 @@
 		"lib": ["ES2015"],
 		"module": "ESNext",
 		"target": "ES6",
-		"jsx": "react-jsx"
+		"jsx": "react-jsx",
+		"strict": true
 	},
 	"include": ["src", "../../apps/web/remix.env.d.ts"],
 	"exclude": ["dist", "build", "node_modules"]

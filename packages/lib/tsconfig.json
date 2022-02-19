@@ -4,7 +4,8 @@
 		"module": "ESNext",
 		"target": "ES6",
 		"jsx": "react-jsx",
-		"moduleResolution": "Node"
+		"moduleResolution": "Node",
+		"strict": true
 	},
 	"include": ["src", "../../apps/web/remix.env.d.ts"],
 	"exclude": ["dist", "build", "node_modules"]

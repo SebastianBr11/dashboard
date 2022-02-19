@@ -1,4 +1,3 @@
-import { Entry, Prisma } from '@prisma/client'
 import Dialog from '@reach/dialog'
 import styles from '@reach/dialog/styles.css'
 import {
@@ -7,7 +6,6 @@ import {
 	json,
 	LinksFunction,
 	LoaderFunction,
-	useActionData,
 	useLoaderData,
 	useNavigate,
 	useTransition,
@@ -32,7 +30,9 @@ export const links: LinksFunction = () => {
 }
 
 export const loader: LoaderFunction = async ({ params }) => {
-	const entry = await prisma.entry.findUnique({ where: { id: params.entryId } })
+	const entry = await prisma.entry.findUnique({
+		where: { id: params.entryId },
+	})
 	if (!entry) throw json('Not found', { status: 404 })
 	return getFullEntry(entry)
 }
