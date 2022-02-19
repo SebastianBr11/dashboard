@@ -9,6 +9,7 @@ This turborepo uses [pnpm](https://pnpm.io) as a packages manager. It includes t
 ### Apps and Packages
 
 - `web`: a [Remix](https://remix.run) app
+- `lib`: a library shared by all apps
 - `ui`: a stub React component library shared by all apps
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
@@ -23,7 +24,11 @@ This turborepo has some additional tools already setup for you:
 
 ## Setup
 
-Clone this repository.
+Clone this repository and run the following command:
+
+```
+pnpm i
+```
 
 ### Build
 
@@ -31,7 +36,7 @@ To build all apps and packages, run the following command:
 
 ```
 cd dashboard
-pnpm run build
+pnpm build
 ```
 
 ### Develop
@@ -39,8 +44,8 @@ pnpm run build
 To develop all apps and packages, run the following command:
 
 ```
-cd my-turborepo
-pnpm run dev
+cd dashboard
+pnpm dev
 ```
 
 ### Remote Caching
@@ -50,7 +55,7 @@ Turborepo can use a technique known as [Remote Caching (Beta)](https://turborepo
 By default, Turborepo will cache locally. To enable Remote Caching (Beta) you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
 ```
-cd my-turborepo
+cd dashboard
 pnpx turbo login
 ```
 
