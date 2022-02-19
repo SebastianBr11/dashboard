@@ -6,4 +6,5 @@ export interface StorageSettings {
 
 export interface StorageEntries {
 	entries: Entries
+	lastUpdated: string
 }
