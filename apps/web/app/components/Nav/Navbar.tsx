@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'remix'
 import { clsx } from '@home-dashboard/lib'
-import Home from '../Icons/Home'
-import Menu from '../Icons/Menu'
-import Settings from '../Icons/Settings'
 import NavbarLink from './NavbarLink'
+import Icon from '../Icons/Icon'
 
 export default function Navbar() {
 	const [isOpen, setIsOpen] = useState(true)
@@ -14,8 +12,11 @@ export default function Navbar() {
 			<nav className='flex flex-col max-w-6xl py-6 gap-y-5'>
 				<div className='flex items-center gap-2'>
 					<>
-						<Menu
-							className='w-8 h-8 cursor-pointer'
+						<Icon
+							aria-label='Menu'
+							icon='menu'
+							size={8}
+							className='cursor-pointer'
 							onClick={() => setIsOpen(isOpen => !isOpen)}
 						/>
 						{isOpen && (
@@ -29,14 +30,14 @@ export default function Navbar() {
 					className='flex items-center mt-8 font-semibold h-7 dark:text-gray-400 hover:dark:text-gray-200'
 					to='/'
 				>
-					<Home className='ml-1' />
+					<Icon aria-label='Home' icon='home' className='ml-1' />
 					{isOpen && <span className='ml-5 text-lg'>Home</span>}
 				</NavbarLink>
 				<NavbarLink
 					className='flex items-center mt-auto font-semibold h-7 dark:text-gray-400 hover:dark:text-gray-200'
 					to='/settings'
 				>
-					<Settings className='ml-1' size='6' />
+					<Icon aria-label='Settings' icon='settings' className='ml-1' />
 					{isOpen && <span className='ml-5 text-lg'>Settings</span>}
 				</NavbarLink>
 			</nav>

@@ -3,8 +3,8 @@ import { FullEntry } from '~/types'
 
 const SUPPORTED_ENTRIES = ['pihole', 'nextcloud']
 
-const PIHOLE_IMG = '/icons/pihole.svg'
-const NEXTCLOUD_IMG = '/icons/nextcloud.svg'
+const PIHOLE_IMG = '/icons/pihole.svg#icon'
+const NEXTCLOUD_IMG = '/icons/nextcloud.svg#icon'
 
 export const getFullEntry = (entry: Entry): FullEntry => {
 	switch (entry.type) {
