@@ -81,7 +81,9 @@ function Layout({ children }: LayoutProps) {
 	return (
 		<>
 			<Navbar />
-			<main className='px-16 mx-auto pt-28 min-w-fit'>{children}</main>
+			<main className='px-16 mx-auto pt-28 dark:bg-gray-800/20'>
+				{children}
+			</main>
 		</>
 	)
 }

@@ -1,14 +1,17 @@
-import { LinksFunction, Outlet, useLoaderData } from 'remix'
+import { LoaderFunction, Outlet, useLoaderData } from 'remix'
 import EntryList from '~/components/Entries/EntryList'
-import { LoaderData } from './api/entries'
-export { loader } from './api/entries'
+import prisma from '~/lib/db.server'
+import { getFullEntry } from '~/lib/entries'
+import { FullEntry } from '~/types'
 
-export const links: LinksFunction = () => {
-	return [{ rel: 'preload', href: '/icons/sprites.svg', as: 'image' }]
+type LoaderData = FullEntry[]
+
+export const loader: LoaderFunction = async () => {
+	const entries = await prisma.entry.findMany()
+	return entries.map(getFullEntry)
 }
-
 export default function Index() {
-	const { entries } = useLoaderData<LoaderData>()
+	const entries = useLoaderData<LoaderData>()
 	return (
 		<div className='max-w-6xl'>
 			<Outlet />

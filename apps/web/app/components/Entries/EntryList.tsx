@@ -1,6 +1,7 @@
 import { Link } from 'remix'
 import { FullEntry } from '~/types'
-import Icon from '../Icons/Icon'
+import ArrowCircleRight from '../Icons/ArrowCircleRight'
+import Edit from '../Icons/Edit'
 import LinkButton from '../LinkButton'
 
 interface EntryListProps {
@@ -23,30 +24,27 @@ export default function EntryList({ entries }: EntryListProps) {
 							{entry.name}
 						</a>
 						<Link to={`/${entry.id}`}>
-							<Icon
-								aria-label='Edit'
-								icon='edit'
-								className='w-full h-full hover:dark:text-gray-300'
-							/>
+							<Edit className='w-full h-full hover:dark:text-gray-300' />
 						</Link>
 					</div>
 					<LinkButton
 						external
 						className='flex items-center gap-2 font-semibold text-indigo-200 transition-colors border-2 w-fit border-indigo-500/50 hover:text-gray-900/80 hover:bg-indigo-500/80'
 						to={entry.url}
-						aria-label='Go to App'
 					>
 						Go to
 						{!entry.extra ? (
 							<>
 								{' '}
 								{entry.name}
-								<Icon icon='arrow-circle-right' />
+								<ArrowCircleRight />
 							</>
 						) : (
-							<svg className='w-8 aspect-square'>
-								<use href={entry.extra.img} />
-							</svg>
+							<img
+								className='aspect-square'
+								src={entry.extra.img}
+								alt={entry.name}
+							/>
 						)}{' '}
 					</LinkButton>
 				</div>
