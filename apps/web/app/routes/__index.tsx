@@ -10,7 +10,7 @@ export const links: LinksFunction = () => {
 export default function Index() {
 	const { entries } = useLoaderData<LoaderData>()
 	return (
-		<div className='max-w-6xl'>
+		<div>
 			<Outlet />
 			<h1 className='mb-6 text-4xl font-bold tracking-wide dark:text-gray-300'>
 				Entries

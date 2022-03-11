@@ -9,7 +9,7 @@ interface EntryListProps {
 
 export default function EntryList({ entries }: EntryListProps) {
 	return (
-		<div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+		<div className='grid gap-4 grid-cols-[repeat(auto-fit,_minmax(220px,_1fr))]'>
 			{entries.map(entry => (
 				<div
 					key={entry.id}

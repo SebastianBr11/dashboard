@@ -11,8 +11,9 @@ import {
 import type { MetaFunction } from 'remix'
 import { ReactNode } from 'react'
 import tailwind from './tailwind.css'
-import Navbar from './components/Nav/Navbar'
+import Sidebar from './components/Nav/Sidebar'
 import LinkButton from './components/LinkButton'
+import Navbar from './components/Nav/Navbar'
 
 export const links: LinksFunction = () => {
 	return [
@@ -34,7 +35,7 @@ export default function App() {
 				<Meta />
 				<Links />
 			</head>
-			<body className='flex min-h-screen dark:bg-gray-900 dark:text-gray-200'>
+			<body className='flex flex-col min-h-screen sm:flex-row dark:bg-gray-900 dark:text-gray-200'>
 				<Layout>
 					<Outlet />
 				</Layout>
@@ -54,7 +55,7 @@ export function CatchBoundary() {
 				<title>Oh no...</title>
 				<Links />
 			</head>
-			<body className='min-h-screen dark:bg-gray-900 dark:text-gray-200'>
+			<body className='flex flex-col min-h-screen sm:flex-row dark:bg-gray-900 dark:text-gray-200'>
 				<Layout>
 					<div className='flex flex-col items-center mt-32'>
 						<h1 className='mb-20 text-8xl'>
@@ -80,8 +81,11 @@ interface LayoutProps {
 function Layout({ children }: LayoutProps) {
 	return (
 		<>
+			<Sidebar />
+			<main className='flex-1 max-w-6xl px-16 mx-auto pt-28 min-w-fit'>
+				{children}
+			</main>
 			<Navbar />
-			<main className='px-16 mx-auto pt-28 min-w-fit'>{children}</main>
 		</>
 	)
 }
